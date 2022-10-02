@@ -1,7 +1,7 @@
 //外部のlibraryからimportしたもの
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
-//自分のローカルファイルからimportしたもの
+//自分のローカルファイルからimport
 import theme from "./theme/theme";
 import { Router } from "./router/Router";
 
