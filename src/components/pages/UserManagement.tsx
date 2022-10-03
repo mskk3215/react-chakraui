@@ -12,11 +12,14 @@ import { UserCard } from "../organisms/user/UserCard";
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
 import { useAllUsers } from "../../hooks/useAllUsers";
 import { useSelectUser } from "../../hooks/useSelectUser";
+import { useLoginUser } from "../../hooks/useLoginUser";
 
 export const UserManagement: VFC = memo(() => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { getUsers, users, loading } = useAllUsers();
   const { onSelectUser, selectedUser } = useSelectUser();
+  const { loginUser } = useLoginUser();
+  console.log(loginUser);
 
   // 画面表示時にユーザー一覧を取得したいのでuseEffectを使用
   //[]配列を設定すると初回のみ実行
@@ -26,6 +29,8 @@ export const UserManagement: VFC = memo(() => {
     (id: number) => {
       onSelectUser({ id, users, onOpen });
     },
+    //[]が空だと最初に実行されたonSlectUserが設定される。結果的に空になる。
+    //useCallbackを使用すると陥りやすい
     [users, onSelectUser, onOpen]
   );
 

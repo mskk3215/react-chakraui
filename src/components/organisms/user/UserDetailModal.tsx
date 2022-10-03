@@ -15,6 +15,7 @@ import { User } from "../../../types/api/user";
 
 //ログインという文字列がchildrenになる
 type Props = {
+  //useselecteduserが渡されるのでuseselecteduserの型に合わせる
   user: User | null;
   isOpen: boolean;
   onClose: () => void;
